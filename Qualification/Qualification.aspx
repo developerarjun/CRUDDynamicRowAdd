@@ -18,14 +18,14 @@
         </tr>
         <tbody data-bind="foreach: Qualifications()">
             <td>
-                <span  data-bind="text: QualName"></span>
+                <span id="qualName" data-bind="text: QualName"></span>
             </td>
             <td>
-                <span data-bind="text: Marks"></span>
+                <span id="marks" data-bind="text: Marks"></span>
             </td>
             <td>
-                 <input type="button" class="add" data-bind= "click: $root.EditQualification" value="Edit Row">
-                 <input type="button" class="add" data-bind="click: $root.DeleteQualification"  value="Delete Row">
+                 <input type="button" class="add" id="edit_button" data-bind= "click: $root.EditQualification" value="Edit Qualification">
+                 <input type="button" class="add" id="delete_button" data-bind="click: $root.DeleteQualification"  value="Delete Qualification">
             </td>
         </tbody>
         <tr>

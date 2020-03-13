@@ -18,19 +18,42 @@
         </tr>
         <tbody data-bind="foreach: Qualifications()">
             <td>
-                <span id="qualName" data-bind="text: QualName"></span>
+                <div data-bind="if: !editable()">
+                    <span id="qualName" data-bind="text: QualName"></span>
+                </div>
+                <div data-bind="if: editable()">
+                   <select  class="dropdown-select"
+                    data-bind="
+                    options:QualificationLists,
+                    optionsText: 'QualName',
+                    optionsValue: $data,
+                    value:UpdateQualification, 
+                    optionsCaption:'---choose---'">
+               </select>
+                </div>
+                </div>
             </td>
             <td>
-                <span id="marks" data-bind="text: Marks"></span>
+                <div data-bind="if: !editable()">
+                    <span id="marks" data-bind="text: Marks"></span>
+                </div>
+                <div data-bind="if: editable()">
+                    <input type="text" data-bind="value: Mark">
+                </div>
             </td>
             <td>
-                 <input type="button" class="add" id="edit_button" data-bind= "click: $root.EditQualification" value="Edit Qualification">
-                 <input type="button" class="add" id="delete_button" data-bind="click: $root.DeleteQualification"  value="Delete Qualification">
+                <div data-bind="if: !editable()">
+                    <input type="button" class="add"  data-bind= "click: $root.EditQualification" value="Edit Qualification">
+                </div>
+                <div data-bind="if: editable()">
+                    <input type="button" class="add" data-bind= "click: $root.UpdateQual" value="Update Qualification">
+                </div>
+                 <input type="button" class="add"  data-bind="click: $root.DeleteQualification"  value="Delete Qualification">
             </td>
         </tbody>
         <tr>
             <td>
-               <select  class="dropdown-select" id="new_name"
+               <select  class="dropdown-select"
                     data-bind="
                     options:QualificationLists,
                     optionsText: 'QualName',
@@ -40,7 +63,7 @@
                </select>
             </td>
             <td>
-                <input type="text" data-bind="value: Marks" id="new_country">
+                <input type="text" data-bind="value: Marks">
             </td>
             <td>
                 <input type="button" class="add" data-bind="click: AddQualification"   value="Add Row">
